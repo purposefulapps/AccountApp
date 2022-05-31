@@ -93,7 +93,7 @@ class DashboardFragment : Fragment() {
             override fun onResponse(call: retrofit2.Call<Payees>, response: retrofit2.Response<Payees>) {
                 if(response.body() != null)
                 {
-                    Toast.makeText(context, response.body()?.status, Toast.LENGTH_LONG).show()
+//                    Toast.makeText(context, response.body()?.status, Toast.LENGTH_LONG).show()
                 }
                 else
                 {

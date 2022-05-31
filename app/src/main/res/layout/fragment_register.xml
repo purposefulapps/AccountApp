@@ -14,53 +14,55 @@
         android:layout_margin="20dp"
         android:text="@string/register" />
 
-    <EditText
-        android:id="@+id/editTextUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextUsernameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:layout_below="@id/textview_title"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:hint="@string/username_hint">
 
-    <EditText
-        android:id="@+id/editTextPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPasswordLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextUsername"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:padding="20dp" />
+        android:layout_margin="20dp"
+        android:layout_below="@id/editTextUsernameLayout"
+        android:hint="@string/password_hint">
 
-    <EditText
-        android:id="@+id/editTextPassword2"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPassword2Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:padding="20dp" />
+        android:layout_margin="20dp"
+        android:layout_below="@id/editTextPasswordLayout"
+        android:hint="@string/password2_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textview_statusmsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPassword2"
+        android:layout_below="@id/editTextPassword2Layout"
         android:layout_marginStart="25dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="20dp"
@@ -84,7 +86,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/editTextPassword"
+        android:layout_alignBottom="@id/editTextPassword2Layout"
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 </RelativeLayout>

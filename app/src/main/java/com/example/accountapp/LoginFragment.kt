@@ -40,13 +40,31 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonLogin.setOnClickListener {
-            val api = ApiHelper.getInstance().create(ApiInterface::class.java)
-            binding.textviewErrormsg.text = ""
-            binding.textviewErrormsg.visibility = View.INVISIBLE
+            if(checkFieldIsEmpty())
+            {
+                binding.textviewErrormsg.text = "Please ensure all fields are filled"
+                binding.textviewErrormsg.visibility = View.VISIBLE
+            }
+            else
+            {
+                binding.textviewErrormsg.text = ""
+                binding.textviewErrormsg.visibility = View.INVISIBLE
+                binding.loginProgressBar.visibility = View.VISIBLE
+                setupLoginCallback()
+            }
+        }
 
-            api.userLogin(binding.editTextUsername.text.toString(),
-                binding.editTextPassword.text.toString())
-                .enqueue(object: Callback<LoginResponses> {
+        binding.buttonRegister.setOnClickListener{
+            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
+        }
+    }
+
+    private fun setupLoginCallback()
+    {
+        val api = ApiHelper.getInstance().create(ApiInterface::class.java)
+        api.userLogin(binding.editTextUsername.text.toString(),
+            binding.editTextPassword.text.toString())
+            .enqueue(object: Callback<LoginResponses> {
                 override fun onFailure(call: retrofit2.Call<LoginResponses>, t: Throwable) {
                     Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
                     binding.loginProgressBar.visibility = View.GONE
@@ -76,12 +94,12 @@ class LoginFragment : Fragment() {
                     }
                 }
             })
-            binding.loginProgressBar.visibility = View.VISIBLE
-        }
+    }
 
-        binding.buttonRegister.setOnClickListener{
-            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
-        }
+    private fun checkFieldIsEmpty(): Boolean
+    {
+        return(binding.editTextUsername.text.isNullOrBlank() ||
+                binding.editTextPassword.text.isNullOrBlank())
     }
 
     override fun onDestroyView() {

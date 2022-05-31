@@ -6,6 +6,9 @@
     <string name="login_fragment_label">Account Login</string>
     <string name="register_fragment_label">Register New User</string>
     <string name="login">Login</string>\
+    <string name="username_hint">Username</string>\
+    <string name="password_hint">Password</string>\
+    <string name="password2_hint">Re-Enter Password</string>\
     <string name="register">Register</string>
     <string name="previous">Previous</string>
 

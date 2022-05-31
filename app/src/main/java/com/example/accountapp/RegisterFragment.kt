@@ -66,9 +66,9 @@ class RegisterFragment : Fragment() {
 
     private fun checkFieldIsEmpty(): Boolean
     {
-        return(binding.editTextUsername.text.isBlank() ||
-                binding.editTextPassword.text.isBlank() ||
-                binding.editTextPassword2.text.isBlank() )
+        return(binding.editTextUsername.text.isNullOrBlank() ||
+                binding.editTextPassword.text.isNullOrBlank() ||
+                binding.editTextPassword2.text.isNullOrBlank() )
     }
 
     private fun checkIsPasswordMatch(): Boolean
