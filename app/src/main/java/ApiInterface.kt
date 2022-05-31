@@ -12,6 +12,13 @@ interface ApiInterface {
         @Field("password") password: String
     ): Call<LoginResponses>
 
+    @FormUrlEncoded
+    @POST("register")
+    fun userRegister(
+        @Field("username") username:String,
+        @Field("password") password: String
+    ): Call<RegisterResponses>
+
     @GET("balance")
     fun getBalance(
         @Header("Authorization") auth: String

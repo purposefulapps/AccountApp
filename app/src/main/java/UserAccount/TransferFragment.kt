@@ -33,7 +33,7 @@ class TransferFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
+        binding.buttonTransfer.setOnClickListener {
             findNavController().navigate(R.id.action_TransferFragment_to_SummaryFragment)
         }
     }

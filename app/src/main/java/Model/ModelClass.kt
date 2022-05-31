@@ -7,6 +7,11 @@ data class LoginResponses(
     val accountNo: String
 )
 
+data class RegisterResponses(
+    val status: String,
+    val error: String
+)
+
 data class Balance(
     val status: String,
     val accountNo: String,
