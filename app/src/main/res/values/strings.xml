@@ -1,22 +1,24 @@
 <resources>
     <string name="app_name">AccountApp</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+
+    //Main Activity
+    <string name="login_fragment_label">Account Login</string>
+    <string name="register_fragment_label">Register New User</string>
     <string name="login">Login</string>\
-    <string name="Register">Register</string>
+    <string name="register">Register</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    //Account Activity
+    <string name="dashboard_fragment_label">My Dashboard</string>
+    <string name="transfer_fragment_label">Transfer</string>
     <string name="title_activity_account">AccountActivity</string>
     <string name="button_transfer">Make Transfer</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-
-    //Summary Page Headings
     <string name="summary_balance">You have</string>
+    <string name="summary_balance_prefix">SGD</string>
     <string name="summary_account_no">Account No</string>
     <string name="summary_account_holder">Account Holder</string>
+    <string name="summary_logout">Logout</string>
+    <string name="transaction_header">Your Transaction History</string>
     <string name="summary_blank">--</string>
 </resources>

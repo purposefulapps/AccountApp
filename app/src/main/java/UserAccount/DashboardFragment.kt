@@ -1,5 +1,6 @@
 package UserAccount
 
+import ApiHelper
 import ApiInterface
 import Balance
 import Model.TransactionChildItemModel
@@ -7,21 +8,22 @@ import Model.TransactionParentItemModel
 import Payees
 import Transactions
 import UserData
+import android.content.Intent
+import android.icu.text.DecimalFormat
+import android.icu.text.NumberFormat
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.accountapp.MainActivity
 import com.example.accountapp.R
 import com.example.accountapp.databinding.FragmentDashboardBinding
 import retrofit2.Callback
-
-import androidx.recyclerview.widget.LinearLayoutManager
-
-
 
 
 /**
@@ -49,6 +51,10 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDataFetchCallbacks()
 
+        binding.textviewLogout.setOnClickListener{
+            val accountIntent = Intent(context, MainActivity::class.java)
+            startActivity(accountIntent)
+        }
         val layoutManager = LinearLayoutManager(context)
         binding.transactionList.layoutManager = layoutManager
 
@@ -107,7 +113,6 @@ class DashboardFragment : Fragment() {
                     storeTransactions(response.body()?.data)
                     val adapter = TransactionParentItemAdapter(convertToModel(hashMapTransactions));
                     binding.transactionList.adapter = adapter
-                    Toast.makeText(context, response.body()?.status, Toast.LENGTH_LONG).show()
                 }
                 else
                 {
@@ -123,7 +128,7 @@ class DashboardFragment : Fragment() {
         {
             if(accountNo.equals(UserData.accountNo, true))
             {
-                binding.textviewBalance.setText(balance.toString())
+                binding.textviewBalance.setText(formatCurrency(balance))
                 binding.textviewAccountNo.setText(accountNo.toString())
                 binding.textviewAccountHolder.setText(UserData.username)
             }
@@ -142,10 +147,13 @@ class DashboardFragment : Fragment() {
 
             for(item in data)
             {
-                var record = TransactionChildItemModel(item.receipient.accountHolder,
-                    item.receipient.accountNo,
-                    item.amount)
-                var date = formatDateTime(item.transactionDate)
+                val accountHolder = if(item.receipient != null) item.receipient.accountHolder else "Default"
+                val accountNo = if(item.receipient != null) item.receipient.accountNo else "--"
+                val amount = if(item.amount != null) item.amount else 0.00
+                val transactionDate = if(item.transactionDate != null) item.transactionDate else ""
+
+                var record = TransactionChildItemModel(accountHolder, accountNo, formatCurrency(amount))
+                var date = formatDateTime(transactionDate)
                 if(hashMapTransactions.containsKey(date))
                 {
                     val arrayList = hashMapTransactions[date]
@@ -184,6 +192,15 @@ class DashboardFragment : Fragment() {
         var output = formatter.format(parser.parse(datetime))
 
         return output
+    }
+
+    fun formatCurrency(value: Double): String
+    {
+        val formatter: NumberFormat = DecimalFormat("###,###,##0.00")
+        formatter.setMaximumFractionDigits(2);
+        val formattedValue = formatter.format(value)
+
+        return formattedValue
     }
 
     override fun onDestroyView() {

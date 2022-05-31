@@ -41,30 +41,42 @@ class LoginFragment : Fragment() {
 
         binding.buttonLogin.setOnClickListener {
             val api = ApiHelper.getInstance().create(ApiInterface::class.java)
+            binding.textviewErrormsg.text = ""
+            binding.textviewErrormsg.visibility = View.INVISIBLE
 
             api.userLogin(binding.editTextUsername.text.toString(),
                 binding.editTextPassword.text.toString())
                 .enqueue(object: Callback<LoginResponses> {
                 override fun onFailure(call: retrofit2.Call<LoginResponses>, t: Throwable) {
                     Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+                    binding.loginProgressBar.visibility = View.GONE
                 }
 
                 override fun onResponse(call: retrofit2.Call<LoginResponses>, response: retrofit2.Response<LoginResponses>) {
                     if(response.body() != null)
                     {
-                        Toast.makeText(context, response.body()?.status, Toast.LENGTH_LONG).show()
                         UserData.token = response.body()?.token.toString()
                         UserData.username = response.body()?.username.toString()
                         UserData.accountNo = response.body()?.accountNo.toString()
                         val accountIntent = Intent(context, AccountActivity::class.java)
                         startActivity(accountIntent)
+                        binding.loginProgressBar.visibility = View.GONE
                     }
                     else
                     {
+                        if(response.message().equals("unauthorized", true) ||
+                            response.message().equals("not found", true) )
+                        {
+                            binding.textviewErrormsg.text = "User Not Found, or Invalid Password"
+                            binding.textviewErrormsg.visibility = View.VISIBLE
+                        }
+
                         Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
+                        binding.loginProgressBar.visibility = View.GONE
                     }
                 }
             })
+            binding.loginProgressBar.visibility = View.VISIBLE
         }
 
         binding.buttonRegister.setOnClickListener{
