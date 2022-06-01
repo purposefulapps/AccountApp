@@ -14,7 +14,10 @@ data class RegisterResponses(
 
 data class TransferResponses(
     val status: String,
-    val error: String
+    val transactionId: String,
+    val amount: Double,
+    val description: String,
+    val recipientAccount: String
 )
 
 data class Balance(
