@@ -4,7 +4,7 @@
 
     //Main Activity
     <string name="login_fragment_label">Account Login</string>
-    <string name="register_fragment_label">Register New User</string>
+    <string name="register_fragment_label">Register New Account</string>
     <string name="login">Login</string>\
     <string name="username_hint">Username</string>\
     <string name="password_hint">Password</string>\
@@ -24,4 +24,9 @@
     <string name="summary_logout">Logout</string>
     <string name="transaction_header">Your Transaction History</string>
     <string name="summary_blank">--</string>
+    <string name="title_transfer">Transfer</string>
+    <string name="transfer_now">Transfer Now</string>
+    <string name="amount_hint">Amount</string>\
+    <string name="select_payee">Select Payee</string>\
+    <string name="description_hint">Description</string>
 </resources>
