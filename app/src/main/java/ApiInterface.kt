@@ -34,6 +34,15 @@ interface ApiInterface {
         @Header("Authorization") auth: String
     ): Call<Transactions>
 
+    @FormUrlEncoded
+    @POST("transfer")
+    fun postTransfer(
+        @Header("Authorization") auth: String,
+        @Field("receipientAccountNo") receipientAccountNo: String,
+        @Field("amount") amount: Double,
+        @Field("description") description: String
+    ): Call<TransferResponses>
+
 }
 
 object ApiHelper {

@@ -12,6 +12,11 @@ data class RegisterResponses(
     val error: String
 )
 
+data class TransferResponses(
+    val status: String,
+    val error: String
+)
+
 data class Balance(
     val status: String,
     val accountNo: String,
