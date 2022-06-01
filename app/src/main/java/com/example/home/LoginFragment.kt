@@ -1,4 +1,4 @@
-package com.example.accountapp
+package com.example.home
 
 import ApiInterface
 import LoginResponses
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.accountapp.databinding.FragmentLoginBinding
+import com.example.home.databinding.FragmentLoginBinding
 import retrofit2.Callback
 import UserAccount.AccountActivity
 import android.content.Intent
@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonLogin.setOnClickListener {
-            if(checkFieldIsEmpty())
+            if(checkFieldIsEmpty(binding.editTextUsername.text.toString(), binding.editTextPassword.text.toString()))
             {
                 binding.textviewErrormsg.text = "Please ensure all fields are filled"
                 binding.textviewErrormsg.visibility = View.VISIBLE
@@ -96,10 +96,10 @@ class LoginFragment : Fragment() {
             })
     }
 
-    private fun checkFieldIsEmpty(): Boolean
+    fun checkFieldIsEmpty(username: String, password: String): Boolean
     {
-        return(binding.editTextUsername.text.isNullOrBlank() ||
-                binding.editTextPassword.text.isNullOrBlank())
+        return(username.isNullOrBlank() ||
+                password.isNullOrBlank())
     }
 
     override fun onDestroyView() {

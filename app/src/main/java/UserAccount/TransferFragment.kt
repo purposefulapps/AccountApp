@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.accountapp.R
-import com.example.accountapp.databinding.FragmentTransferBinding
+import com.example.home.R
+import com.example.home.databinding.FragmentTransferBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

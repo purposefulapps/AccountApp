@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.accountapp.R
+import com.example.home.R
 
 class TransactionChildItemAdapter(private val mList: List<TransactionChildItemModel>) :
             RecyclerView.Adapter<TransactionChildItemAdapter.ViewHolder>()

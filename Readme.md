@@ -12,8 +12,8 @@ Upon login, User will be brought to Account Dashboard for account details.
 
 AccountApp complete source codes are hosted in github. Clone repository with provided link: https://github.com/purposefulapps/AccountApp.git.
 
-AccountApp consists of 2 Activities, MainActivity and AccountActivity. 
-MainActivity consist of the landing page, Login and Register, while AccountActivity consists of Dashboard and Transfer. 
+AccountApp consists of 2 Activities, HomeActivity and AccountActivity. 
+HomeActivity consist of the landing page, Login and Register, while AccountActivity consists of Dashboard and Transfer. 
 Each of the pages are fragment class, namely, LoginFragment, RegisterFragment, DashboardFragment and TransferFragment.
 
 At current stage, TransferFragment is not completed yet.

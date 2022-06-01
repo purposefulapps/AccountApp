@@ -1,14 +1,13 @@
 package UserAccount
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.accountapp.R
-import com.example.accountapp.databinding.ActivityAccountBinding
+import com.example.home.R
+import com.example.home.databinding.ActivityAccountBinding
 
 class AccountActivity : AppCompatActivity() {
 

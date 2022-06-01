@@ -20,9 +20,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.accountapp.MainActivity
-import com.example.accountapp.R
-import com.example.accountapp.databinding.FragmentDashboardBinding
+import com.example.home.HomeActivity
+import com.example.home.R
+import com.example.home.databinding.FragmentDashboardBinding
 import retrofit2.Callback
 
 
@@ -52,7 +52,7 @@ class DashboardFragment : Fragment() {
         setupDataFetchCallbacks()
 
         binding.textviewLogout.setOnClickListener{
-            val accountIntent = Intent(context, MainActivity::class.java)
+            val accountIntent = Intent(context, HomeActivity::class.java)
             startActivity(accountIntent)
         }
         val layoutManager = LinearLayoutManager(context)

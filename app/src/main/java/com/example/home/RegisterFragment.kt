@@ -1,19 +1,14 @@
-package com.example.accountapp
+package com.example.home
 
 import ApiInterface
-import LoginResponses
 import RegisterResponses
-import UserAccount.AccountActivity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import com.example.accountapp.databinding.FragmentRegisterBinding
+import com.example.home.databinding.FragmentRegisterBinding
 import retrofit2.Callback
 import org.json.JSONObject
 import java.lang.Exception
@@ -44,12 +39,15 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonRegister.setOnClickListener {
-            if(checkFieldIsEmpty())
+            if(checkFieldIsEmpty(binding.editTextUsername.text.toString(),
+                                binding.editTextPassword.text.toString(),
+                                binding.editTextPassword2.text.toString()))
             {
                 binding.textviewStatusmsg.text = "Please ensure all fields are filled"
                 binding.textviewStatusmsg.visibility = View.VISIBLE
             }
-            else if(!checkIsPasswordMatch())
+            else if(!checkIsPasswordMatch(binding.editTextPassword.text.toString(),
+                                        binding.editTextPassword2.text.toString()))
             {
                 binding.textviewStatusmsg.text = "Password Mismatch"
                 binding.textviewStatusmsg.visibility = View.VISIBLE
@@ -64,16 +62,16 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun checkFieldIsEmpty(): Boolean
+    fun checkFieldIsEmpty(username: String, password1: String, password2: String): Boolean
     {
-        return(binding.editTextUsername.text.isNullOrBlank() ||
-                binding.editTextPassword.text.isNullOrBlank() ||
-                binding.editTextPassword2.text.isNullOrBlank() )
+        return(username.isNullOrBlank() ||
+                password1.isNullOrBlank() ||
+                password2.isNullOrBlank())
     }
 
-    private fun checkIsPasswordMatch(): Boolean
+    fun checkIsPasswordMatch(password1: String, password2: String): Boolean
     {
-        return(binding.editTextPassword.text.toString().equals(binding.editTextPassword2.text.toString()))
+        return(password1.equals(password2))
     }
 
     fun setupRegisterCallback()
