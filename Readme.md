@@ -16,7 +16,9 @@ AccountApp consists of 2 Activities, HomeActivity and AccountActivity.
 HomeActivity consist of the landing page, Login and Register, while AccountActivity consists of Dashboard and Transfer. 
 Each of the pages are fragment class, namely, LoginFragment, RegisterFragment, DashboardFragment and TransferFragment.
 
-At current stage, TransferFragment is not completed yet.
+API calls to backend server are declared in the ApiInterface class. Data structures are declared in ModelClass. UserData object holds user information during the login session. 
+
+At current stage, TransferFragment is not functional yet.
 
 ### Credit
 
