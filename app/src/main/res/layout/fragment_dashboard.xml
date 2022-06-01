@@ -128,7 +128,7 @@
                 android:id="@+id/textview_transaction_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="5dp"
                 android:text="@string/transaction_header"
@@ -146,9 +146,10 @@
             <Button
                 android:id="@+id/button_transfer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:text="@string/button_transfer" />
+                android:layout_height="@dimen/button_height"
+                android:layout_margin="@dimen/button_margin"
+                android:text="@string/button_transfer"
+                app:cornerRadius="@dimen/button_corner" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

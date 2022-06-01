@@ -73,13 +73,11 @@
     <Button
         android:id="@+id/button_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_below="@id/textview_statusmsg"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/register" />
+        android:layout_margin="@dimen/button_margin"
+        android:text="@string/register"
+        app:cornerRadius="@dimen/button_corner"/>
 
     <ProgressBar
         android:id="@+id/registerProgressBar"
