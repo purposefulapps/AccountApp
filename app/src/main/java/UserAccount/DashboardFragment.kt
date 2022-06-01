@@ -85,23 +85,6 @@ class DashboardFragment : Fragment() {
             }
         })
 
-        api.getPayees(UserData.token).enqueue(object: Callback<Payees> {
-            override fun onFailure(call: retrofit2.Call<Payees>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(call: retrofit2.Call<Payees>, response: retrofit2.Response<Payees>) {
-                if(response.body() != null)
-                {
-//                    Toast.makeText(context, response.body()?.status, Toast.LENGTH_LONG).show()
-                }
-                else
-                {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
-                }
-            }
-        })
-
         api.getTransactions(UserData.token).enqueue(object: Callback<Transactions> {
             override fun onFailure(call: retrofit2.Call<Transactions>, t: Throwable) {
                 Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
@@ -180,7 +163,7 @@ class DashboardFragment : Fragment() {
             var record = TransactionParentItemModel(item.key, item.value)
             list.add(record)
         }
-
+        list.sortByDescending { it.date }
         return list
     }
 
